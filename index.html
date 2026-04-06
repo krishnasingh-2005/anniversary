@@ -1,0 +1,1076 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For You</title>
+    
+    <!-- Fonts: Playfair Display (Serif) & Inter (Sans) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&amp;family=Playfair+Display:ital,wght@0,400;0,500;1,400&amp;display=swap" rel="stylesheet">
+    
+    <!-- Iconify -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        /* Slow Gradient Shift */
+        @keyframes bg-shift {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 0% 100%; }
+        }
+
+        /* Ambient Pulse Layer */
+        @keyframes ambient-pulse {
+            0%, 100% { transform: scale(1); opacity: 0.15; }
+            50% { transform: scale(1.02); opacity: 0.25; }
+        }
+
+        /* Subtly follow cursor */
+        .cursor-glow {
+            transition: top 0.15s ease-out, left 0.15s ease-out;
+            background: transparent;
+        }
+
+        /* Base relaxed line heights */
+        .relaxed-text p {
+            line-height: 2;
+        }
+        section {
+            transition: opacity 1s ease-in-out, filter 1s ease-in-out;
+        }
+        html, body {
+            height: 100%;
+        }
+
+        section {
+            min-height: 100dvh; /* 🔥 mobile safe height */
+        }
+        p {
+            word-break: break-word;
+        }
+    </style>
+</head>
+<body class="bg-[#0b0b0b] text-[#f5f5f5] min-h-screen w-full overflow-hidden antialiased font-sans selection:bg-[#d4a373]/30 flex flex-col items-center justify-center">
+
+    <!-- Desktop Cursor Glow -->
+    <div id="cursor-glow" class="cursor-glow fixed w-[400px] h-[400px] rounded-full pointer-events-none z-[100] hidden md:block -translate-x-1/2 -translate-y-1/2"></div>
+
+    <!-- Ambient Audio Placeholder -->
+    <audio id="bg-music" loop="">
+        <source src="heeriye.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Initial Loader Fade -->
+    <div id="loader" class="fixed inset-0 bg-[#0f0f0f] z-[100] transition-opacity duration-[3000ms] ease-in-out pointer-events-none"></div>
+
+    <!-- Navigation Dots -->
+    <div id="nav-dots" class="fixed right-6 md:right-10 top-1/2 -translate-y-1/2 flex flex-col gap-5 z-50 mix-blend-screen hidden md:flex">
+        <!-- Dots injected via JS -->
+    </div>
+
+
+<section id="welcome-screen" class="fixed inset-0 flex flex-col items-center justify-center bg-black/90 backdrop-blur-sm z-[200] text-center px-5 sm:px-6 transition-opacity duration-1000">
+
+<div class="space-y-10">
+
+    <!-- Name Reveal -->
+<h1 id="name-intro-text"
+    data-name="Malkin Ji"
+    class="text-[#d4a373] text-3xl md:text-5xl font-serif tracking-wide flex items-center justify-center gap-1">
+
+    <span id="typed-name"></span>
+    <span id="cursor" class="animate-pulse">|</span>
+
+</h1>
+
+    <!-- Subtext -->
+    <p id="intro-sub"
+        class="opacity-0 text-[#a1a1aa] text-sm tracking-widest transition-all duration-[1500ms] ease-in-out">
+        sirf tumhare liye…
+    </p>
+
+    <!-- Button -->
+    <button id="start-btn"
+        onclick="startExperience()"
+        class="opacity-0 pointer-events-none mt-6 px-5 sm:px-6 py-3 border border-[#2a2a2a] text-[#f5f5f5] text-sm tracking-widest hover:border-[#d4a373] transition-all duration-500">
+        start karein?
+    </button>
+
+</div>
+
+</section>
+
+    <!-- Section 0: Entry Screen -->
+   <section id="sec-0" class="fixed inset-0 flex flex-col items-center justify-center transition-opacity duration-[1000ms] ease-in-out z-10 opacity-100 pointer-events-auto relaxed-text backdrop-blur-[1px] bg-[#0b0b0b]">
+        <div class="max-w-[600px] w-full text-center space-y-6 px-5 sm:px-6">
+            <h1 class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-serif font-medium text-3xl md:text-5xl tracking-tight text-[#f5f5f5]">For you...</h1>
+            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-sm md:text-base text-[#a1a1aa] tracking-widest">8 April</p>
+        </div>
+    </section>
+
+    <!-- Section 1: Beginning -->
+    <section id="sec-1" class="fixed inset-0 flex flex-col items-center justify-center transition-opacity duration-[1000ms] ease-in-out z-0 opacity-0 pointer-events-none relaxed-text backdrop-blur-[1px] bg-[#0b0b0b]">
+        <div class="max-w-[600px] w-full text-center space-y-10 px-5 sm:px-6">
+            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-serif font-medium text-xl sm:text-2xl md:text-4xl tracking-tight text-[#f5f5f5]">8 April 2025...</p>
+            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-base md:text-lg text-[#a1a1aa]">shayad raat ke 12 ya 2 baje ke aas paas</p>
+            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-base md:text-lg text-[#a1a1aa]">sab kuch ek normal din ki tarah hi start hua tha</p>
+            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-base md:text-lg text-[#a1a1aa]">kuch special nahi…</p>
+            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-base md:text-lg text-[#a1a1aa]">kuch plan bhi nahi tha</p>
+        </div>
+    </section>
+
+    <!-- Section 2: First Connection -->
+    <section id="sec-2" class="fixed inset-0 flex flex-col items-center justify-center transition-opacity duration-[1000ms] ease-in-out z-0 opacity-0 pointer-events-none relaxed-text backdrop-blur-[1px] bg-[#0b0b0b]">
+        <div class="max-w-[600px] w-full text-center space-y-10 px-5 sm:px-6">
+            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-serif font-medium text-xl sm:text-2xl md:text-4xl tracking-tight text-[#f5f5f5]">bas baat ho rahi thi…</p>
+            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-base md:text-lg text-[#a1a1aa]">kuch khas bhi nahi…</p>
+            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-base md:text-lg text-[#a1a1aa]">par pata nahi kyun,</p>
+            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-base md:text-lg text-[#a1a1aa]">main un baaton ka wait karne laga tha</p>
+        </div>
+    </section>
+
+    <!-- Section 3: Something Was There -->
+    <section id="sec-3" class="fixed inset-0 flex flex-col items-center justify-center transition-opacity duration-[1000ms] ease-in-out z-0 opacity-0 pointer-events-none relaxed-text backdrop-blur-[1px] bg-[#0b0b0b]">
+        <div class="max-w-[600px] w-full text-center space-y-10 px-5 sm:px-6">
+            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-serif font-medium text-xl sm:text-2xl md:text-4xl tracking-tight text-[#f5f5f5]">cheezain tab bhi thi…</p>
+            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-base md:text-lg text-[#a1a1aa]">maine apne tareeke se kaafi kuch keh diya tha</p>
+            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-base md:text-lg text-[#a1a1aa]">shayad directly nahi…</p>
+            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-base md:text-lg text-[#a1a1aa]">par tha sab</p>
+        </div>
+    </section>
+
+<!-- Section 4: Her POV -->
+<section id="sec-4" class="fixed inset-0 flex flex-col items-center justify-center transition-opacity duration-[1000ms] ease-in-out z-0 opacity-0 pointer-events-none relaxed-text backdrop-blur-[1px] bg-[#0b0b0b]">
+    <div class="max-w-[600px] w-full text-center space-y-10 px-5 sm:px-6">
+
+        <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out">shayad tum soch rahi hogi…</p>
+        <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out">ye sab itna serious kaise ho gaya</p>
+        <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out">kab normal baatein… important ho gayi</p>
+        <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out">kab baat karna zaroori ho gaya</p>
+        <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out">kab ek dusre ki aadat si ho gayi</p>
+        <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out">pata hi nahi chala</p>
+
+    </div>
+</section>
+
+    <!-- Section 5: The Night -->
+    <section id="sec-5" class="fixed inset-0 flex flex-col items-center justify-center transition-opacity duration-[1000ms] ease-in-out z-0 opacity-0 pointer-events-none relaxed-text backdrop-blur-[1px] bg-[#0b0b0b]">
+        <div class="max-w-[600px] w-full text-center space-y-10 px-5 sm:px-6">
+            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-serif font-medium text-xl sm:text-2xl md:text-4xl tracking-tight text-[#f5f5f5]">phir uss raat…</p>
+            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-base md:text-lg text-[#a1a1aa]">tumne bhi keh diya</p>
+            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-base md:text-lg text-[#a1a1aa]">aur pata nahi kyun…</p>
+            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-base md:text-lg text-[#a1a1aa]">uske baad sab alag lagne laga</p>
+        </div>
+    </section>
+
+    <!-- Section 6: Memory Timeline -->
+    <section id="sec-6" class="fixed inset-0 flex flex-col items-center justify-center transition-opacity duration-[1000ms] ease-in-out z-0 opacity-0 pointer-events-none backdrop-blur-[1px] bg-[#0b0b0b]">
+        <div class="relative w-full max-w-[600px] mx-auto py-14 md:py-16 px-5 sm:px-6">
+            <!-- Center Line -->
+            <div class="absolute left-4 md:left-1/2 top-14 bottom-14 w-px bg-[#2a2a2a] -translate-x-1/2"></div>
+            
+            <!-- Nodes Container -->
+            <div class="flex flex-col gap-16 w-full">
+                <!-- Node 1 -->
+                <div class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out relative flex items-center justify-between w-full group">
+                    <div class="w-full md:w-1/2 pr-4 md:pr-8 text-left md:text-right">
+                        <p class="font-light text-xs md:text-sm text-[#a1a1aa]">uss raat… 12 ya shayad 2 baje</p>
+                    </div>
+                    <button class="node-btn absolute left-4 md:left-1/2 -translate-x-1/2 w-[14px] h-[14px] rounded-full bg-[#1a1a1a] border border-[#2a2a2a] transition-all duration-500 z-10 outline-none cursor-pointer" onclick="activateNode(this);"></button>
+                    <div class="w-full md:w-1/2 pl-4 md:pl-8"></div>
+                </div>
+
+                <!-- Node 2 -->
+                <div class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out relative flex items-center justify-between w-full group">
+                    <div class="w-full md:w-1/2 pr-4 md:pr-8"></div>
+                    <button class="node-btn absolute left-4 md:left-1/2 -translate-x-1/2 w-[14px] h-[14px] rounded-full bg-[#1a1a1a] border border-[#2a2a2a] transition-all duration-500 z-10 outline-none cursor-pointer" onclick="activateNode(this);"></button>
+                    <div class="w-full md:w-1/2 pl-4 md:pl-8 text-left">
+                        <p class="font-light text-xs md:text-sm text-[#a1a1aa]">random late night baatein</p>
+                    </div>
+                </div>
+
+                <!-- Node 3 -->
+                <div class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out relative flex items-center justify-between w-full group">
+                    <div class="w-full md:w-1/2 pr-4 md:pr-8 text-left md:text-right">
+                        <p class="font-light text-xs md:text-sm text-[#a1a1aa]">chhoti chhoti baatein jinka koi matlab nahi hota tha</p>
+                    </div>
+                    <button class="node-btn absolute left-4 md:left-1/2 -translate-x-1/2 w-[14px] h-[14px] rounded-full bg-[#1a1a1a] border border-[#2a2a2a] transition-all duration-500 z-10 outline-none cursor-pointer" onclick="activateNode(this);"></button>
+                    <div class="w-full md:w-1/2 pl-4 md:pl-8"></div>
+                </div>
+
+                <!-- Node 4 -->
+                <div class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out relative flex items-center justify-between w-full group">
+                    <div class="w-full md:w-1/2 pr-4 md:pr-8"></div>
+                    <button class="node-btn absolute left-4 md:left-1/2 -translate-x-1/2 w-[14px] h-[14px] rounded-full bg-[#1a1a1a] border border-[#2a2a2a] transition-all duration-500 z-10 outline-none cursor-pointer" onclick="activateNode(this);"></button>
+                    <div class="w-full md:w-1/2 pl-4 md:pl-8 text-left">
+                        <p class="font-light text-xs md:text-sm text-[#a1a1aa]">stupid jokes jo sirf hume samajh aate the</p>
+                    </div>
+                </div>
+
+                <!-- Node 5 -->
+                <div class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out relative flex items-center justify-between w-full group">
+                    <div class="w-full md:w-1/2 pr-4 md:pr-8 text-left md:text-right">
+                        <p class="font-light text-xs md:text-sm text-[#a1a1aa]">baar baar phone check karna… sirf tumhare liye</p>
+                    </div>
+                    <button class="node-btn absolute left-4 md:left-1/2 -translate-x-1/2 w-[14px] h-[14px] rounded-full bg-[#1a1a1a] border border-[#2a2a2a] transition-all duration-500 z-10 outline-none cursor-pointer" onclick="activateNode(this);"></button>
+                    <div class="w-full md:w-1/2 pl-4 md:pl-8"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Floating Card -->
+        <div id="timeline-card" class="absolute inset-0 z-50 flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-700 bg-[#0f0f0f]/70 backdrop-blur-md">
+            <div class="absolute inset-0 cursor-pointer" onclick="closeCard()"></div>
+            <div id="card-content" class="relative bg-[#181818] rounded-xl shadow-[0_10px_40px_rgba(0,0,0,0.6)] px-10 py-12 max-w-[340px] text-center border border-[#2a2a2a] transform scale-95 translate-y-3 transition-all duration-700 mx-6">
+                <p class="text-[#f5f5f5] text-sm md:text-base font-light leading-[2.2] tracking-wide">
+                    <span class="block">mujhe abhi bhi yaad hai wo moment…</span>
+                    <span class="block">maine apne tareeke se pehle hi keh diya tha</span>
+                    <span class="block">par tumse sunna…</span>
+                    <span class="block mt-6 text-[#d4a373]">usse real bana diya</span>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 7: Realisation (Emotional Peak) -->
+    <section id="sec-7" class="fixed inset-0 flex flex-col items-center justify-center transition-opacity duration-[1000ms] ease-in-out z-0 opacity-0 pointer-events-none relaxed-text backdrop-blur-[1px] bg-[#0b0b0b]">
+        <div class="max-w-[600px] w-full text-center space-y-12 px-5 sm:px-6">
+            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-serif font-medium text-xl sm:text-2xl md:text-4xl tracking-tight text-[#f5f5f5]">maine kabhi plan nahi kiya tha…</p>
+            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-base md:text-lg text-[#a1a1aa]">par dheere dheere…</p>
+            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-base md:text-lg text-[#a1a1aa]">tum wo ban gayi</p>
+            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-base md:text-lg text-[#a1a1aa]">jiski main shayad jitna hona chahiye usse zyada care karta hoon</p>
+        </div>
+    </section>
+
+<!-- Section 8: Small Things -->
+<section id="sec-8" class="fixed inset-0 flex flex-col items-center justify-center transition-opacity duration-[1000ms] ease-in-out z-0 opacity-0 pointer-events-none relaxed-text backdrop-blur-[1px] bg-[#0b0b0b]">
+    <div class="max-w-[600px] w-full text-center space-y-10 px-5 sm:px-6">
+
+        <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out">mujhe lagta tha baatein hi important hoti hain…</p>
+        <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out">par tumse baat karke samajh aaya…</p>
+        <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out">har baar kuch kehna zaroori nahi hota</p>
+        <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out">kabhi kabhi bas</p>
+        <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out">baat chalti rehna hi kaafi hota hai</p>
+        <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out">aur shayad…</p>
+        <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out">mujhe wahi accha lagta hai</p>
+
+    </div>
+</section>
+
+<!-- Section 9: Anniversary -->
+<section id="sec-9" class="fixed inset-0 flex flex-col items-center justify-center transition-opacity duration-[1000ms] ease-in-out z-0 opacity-0 pointer-events-none relaxed-text backdrop-blur-[1px] bg-[#0b0b0b]">
+
+    <div class="max-w-[600px] w-full text-center space-y-10 px-5 sm:px-6">
+
+        <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-serif text-xl sm:text-2xl md:text-4xl">
+            happy anniversary
+        </p>
+
+        <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out text-[#a1a1aa]">
+            1 saal ho gaya…
+        </p>
+
+        <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out text-[#a1a1aa]">
+            itni saari fights  
+            itne saare moments  
+            aur phir bhi…
+        </p>
+
+        <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out text-[#a1a1aa]">
+            hum abhi bhi saath hain
+        </p>
+
+        <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out text-[#d4a373]">
+            aur shayad wahi sabse important hai
+        </p>
+
+    </div>
+
+</section>
+
+    <!-- Section 10: Ending -->
+    <section id="sec-10" class="fixed inset-0 flex flex-col items-center justify-center transition-opacity duration-[1000ms] ease-in-out z-0 opacity-0 pointer-events-none relaxed-text backdrop-blur-[1px] bg-[#0b0b0b]">
+        <div class="max-w-[600px] w-full text-center space-y-10 px-5 sm:px-6">
+            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-serif font-medium text-xl sm:text-2xl md:text-4xl tracking-tight text-[#f5f5f5]">1 saal</p>
+            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-base md:text-lg text-[#a1a1aa]">365 din</p>
+            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-base md:text-lg text-[#a1a1aa]">aur pata nahi kaise…</p>
+            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-base md:text-lg text-[#a1a1aa]">abhi bhi sab naya sa lagta hai</p>
+            
+            <div class="pt-12">
+                <p id="final-text" class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-out font-serif font-medium text-3xl md:text-5xl tracking-tight text-[#d4a373] transform scale-100">
+                    accha lagta hai… ki tum ho
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 11: Final Closing -->
+    <section id="sec-11" class="fixed inset-0 flex flex-col items-center justify-center transition-opacity duration-[1000ms] ease-in-out z-0 opacity-0 pointer-events-none backdrop-blur-[1px] bg-[#0b0b0b]">
+        <div id="sec-10-dimmer" class="absolute inset-0 bg-black/50 opacity-0 transition-opacity duration-[3000ms] ease-in-out z-[-1]"></div>
+        <div class="max-w-[600px] w-full text-center px-5 sm:px-6 flex flex-col items-center">
+            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-serif font-medium text-xl sm:text-2xl md:text-4xl tracking-tight text-[#f5f5f5]">abhi to bas shuru kiya hai…</p>
+
+<button onclick="openLetter()" 
+    class="relative group px-5 sm:px-6 py-3 rounded-full border border-[#d4a373]/30 text-[#d4a373] text-sm tracking-widest transition-all duration-500 overflow-hidden">
+
+    <!-- ✨ NEW: outer glow ring -->
+    <span class="absolute -inset-[1px] rounded-full opacity-0 group-hover:opacity-100 transition duration-700 border border-[#d4a373]/40"></span>
+
+    <!-- Glow background -->
+    <span class="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-700 bg-[#d4a373]/10 blur-md"></span>
+
+    <!-- Inner subtle fill -->
+    <span class="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-[#d4a373]/5"></span>
+
+    <!-- Text -->
+    <span class="relative z-10 group-hover:tracking-[0.25em] transition-all duration-500">
+        ek last cheez…
+    </span>
+
+</button>
+            
+            <button id="replay-btn" onclick="restartExperience()" class="opacity-0 pointer-events-none transition-opacity duration-1000 ease-in-out text-[#a1a1aa] hover:text-[#d4a373] flex flex-col items-center gap-3 mt-24 text-xs tracking-[0.2em] uppercase outline-none cursor-pointer">
+                <iconify-icon icon="solar:restart-linear" width="1.8em" stroke-width="1.5"></iconify-icon>
+                Replay
+            </button>
+        </div>
+    </section>
+
+
+<!-- 💌 Hidden Letter Overlay -->
+<div id="letter-overlay" 
+     class="fixed inset-0 z-[300] bg-black/80 backdrop-blur-md flex items-start justify-center overflow-y-auto px-4 py-14 opacity-0 pointer-events-none transition-opacity duration-[1000ms] ease-in-out">
+
+    <!-- Click outside to close -->
+    <div class="absolute inset-0" onclick="closeLetter()"></div>
+
+    <!-- Letter Content -->
+    <div id="letter-content"
+         class="relative w-full max-w-[500px] text-center transform scale-95 translate-y-6 transition-all duration-[1500ms] ease-in-out">
+
+<p id="letter-lines"
+   class="text-[#f5f5f5] text-base md:text-lg font-light leading-[2] md:leading-[2.2] tracking-wide">
+
+    <span class="letter-line block opacity-0 translate-y-4">kab shuru hua…</span>
+    <span class="letter-line block opacity-0 translate-y-4">pata nahi</span>
+
+    <span class="letter-line block mt-6 opacity-0 translate-y-4">kab tum itni important ho gayi</span>
+    <span class="letter-line block opacity-0 translate-y-4">ye bhi samajh nahi aaya</span>
+
+    <span class="letter-line block mt-6 opacity-0 translate-y-4">bas itna pata hai…</span>
+
+    <span class="letter-line block mt-6 opacity-0 translate-y-4">ab aadat si ho gayi hai</span>
+    <span class="letter-line block opacity-0 translate-y-4">tumhari</span>
+
+    <span class="letter-line block mt-6 opacity-0 translate-y-4">main perfect nahi hoon</span>
+
+    <span class="letter-line block mt-6 opacity-0 translate-y-4">kabhi galat samajhunga</span>
+    <span class="letter-line block opacity-0 translate-y-4">kabhi late samajhunga</span>
+
+    <span class="letter-line block mt-6 opacity-0 translate-y-4">par ek cheez nahi badlegi…</span>
+
+    <span class="letter-line block mt-6 text-[#d4a373] opacity-0 translate-y-4">tum important ho</span>
+    <span class="letter-line block text-[#d4a373] opacity-0 translate-y-4">aur rahogi</span>
+
+    <span class="letter-line block mt-6 opacity-0 translate-y-4">baaki sab…</span>
+    <span class="letter-line block opacity-0 translate-y-4">hum dekh lenge</span>
+</p>
+
+        <!-- Close hint -->
+        <p class="mt-10 text-xs text-[#a1a1aa] tracking-widest opacity-60">
+            tap anywhere to close
+        </p>
+
+    </div>
+</div>
+
+
+    <!-- Scripts -->
+    <script>
+        const totalSections = 12;
+        let currentSection = 0;
+        let isAnimating = false;
+        let audioPlayed = false;
+        const audio = document.getElementById('bg-music');
+        // 🔥 TYPEWRITER WITH CURSOR (FINAL FIX)
+        const nameEl = document.getElementById('typed-name');
+        const cursor = document.getElementById('cursor');
+        const sub = document.getElementById('intro-sub');
+        const btn = document.getElementById('start-btn');
+
+
+
+        // Cursor tracking
+        document.addEventListener('mousemove', (e) => {
+            const cursor = document.getElementById('cursor-glow');
+            if(cursor) {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+            }
+        });
+
+        // Initialize loader and dots
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loader');
+            loader.classList.add('opacity-0');
+            
+            const navContainer = document.getElementById('nav-dots');
+            for(let i=0; i<totalSections; i++) {
+                const dot = document.createElement('div');
+                dot.className = `w-[5px] h-[5px] rounded-full transition-all duration-700 ease-in-out ${i === 0 ? 'bg-[#f5f5f5] scale-150 shadow-[0_0_8px_rgba(245,245,245,0.4)]' : 'bg-[#a1a1aa]/30 scale-100'}`;
+                dot.id = `dot-${i}`;
+                navContainer.appendChild(dot);
+            }
+
+            // Start entry sequence
+            setTimeout(() => {
+                // 0.8s breathing pause
+// waiting for user interaction (welcome screen)
+            }, 500); // Wait for loader
+
+// 🔥 Start typing immediately
+typeWriter();
+
+// 🔥 Show subtext after typing starts
+setTimeout(() => {
+    sub.classList.remove('opacity-0');
+    sub.classList.add('opacity-100');
+}, 2000);
+
+// 🔥 Show button AFTER emotional buildup
+setTimeout(() => {
+    btn.classList.remove('opacity-0', 'pointer-events-none');
+    btn.classList.add('opacity-100', 'pointer-events-auto');
+}, 3500);
+        });
+
+
+const fullName = document
+    .getElementById('name-intro-text')
+    .getAttribute('data-name');
+
+let i = 0;
+
+function typeWriter() {
+    if (i < fullName.length) {
+        nameEl.textContent += fullName.charAt(i);
+        i++;
+        setTimeout(typeWriter, 220);
+    } else {
+        // cursor fade after typing
+        setTimeout(() => {
+            cursor.style.opacity = '0';
+        }, 1200);
+
+        // glow effect
+        document.getElementById('name-intro-text').style.transform = 'scale(1.05)';
+        document.getElementById('name-intro-text').style.textShadow =
+            '0 0 25px rgba(212,163,115,0.4)';
+    }
+}
+
+
+        // Audio Management
+        function initAudio() {
+            if (audioPlayed) return;
+            audio.volume = 0;
+            audio.currentTime = 92; // 🔥 start from 1:32 (best emotional entry)
+            audio.play().catch(() => {});
+            audioPlayed = true;
+            
+            // 3s Fade-in to 0.2
+            let vol = 0;
+            let fadeInterval = setInterval(() => {
+                if (vol < 0.2) {
+                    vol += 0.01;
+                    audio.volume = Math.min(vol, 0.2);
+                } else {
+                    clearInterval(fadeInterval);
+                }
+            }, 150); // 150ms * 20 steps = 3000ms
+        }
+
+function updateVolume(index) {
+  if (!audioPlayed) return;
+
+const volumeMap = {
+  0: 0.12,
+  1: 0.16,
+  2: 0.20,
+  3: 0.24,
+  4: 0.30,
+  5: 0.34,
+  6: 0.45,
+  7: 0.42,
+  8: 0.30,
+  9: 0.26,
+  10: 0.22,
+  11: 0.18
+};
+
+
+  audio.volume = volumeMap[index] || 0.2;
+}
+
+        function fadeAudioOut() {
+            if (!audioPlayed) return;
+            let vol = audio.volume;
+            let fadeInterval = setInterval(() => {
+                if (vol > 0.1) {
+                    vol -= 0.02;
+                    audio.volume = Math.max(vol, 0.1);
+                } else {
+                    clearInterval(fadeInterval);
+                }
+            }, 200);
+        }
+
+        // Dot navigation UI
+        function updateDots(index) {
+            for(let i=0; i<totalSections; i++) {
+                const dot = document.getElementById(`dot-${i}`);
+                if(!dot) continue;
+                if(i === index) {
+                    dot.classList.remove('bg-[#a1a1aa]/30', 'scale-100');
+                    dot.classList.add('bg-[#f5f5f5]', 'scale-150', 'shadow-[0_0_8px_rgba(245,245,245,0.4)]');
+                } else {
+                    dot.classList.remove('bg-[#f5f5f5]', 'scale-150', 'shadow-[0_0_8px_rgba(245,245,245,0.4)]');
+                    dot.classList.add('bg-[#a1a1aa]/30', 'scale-100');
+                }
+            }
+        }
+
+function getDelay(index) {
+  if (index <= 2) return 700;
+  if (index === 3) return 750;
+  if (index === 4) return 950;
+  if (index === 5) return 800;
+  if (index === 6) return 1400;
+  if (index === 7) return 1100;
+  if (index === 8) return 1000; // small things → softer pacing
+  if (index === 10) return 1300; // final line → slower buildup
+  if (index === 11) return 1200;
+
+  return 900; // ✅ fallback
+}
+
+        // Text reveal logic
+        function triggerTextReveal(index) {
+            const section = document.getElementById(`sec-${index}`);
+            const lines = section.querySelectorAll('.reveal-text');
+            
+            // Section 6 is emotional peak, slower pacing
+            const delayMultiplier = getDelay(index);
+
+            lines.forEach((line, i) => {
+let randomPause = Math.random() * 200; // human imperfection
+let actualDelay = i * delayMultiplier + randomPause;
+
+// Add slight delay to first line
+if (i === 0) actualDelay += 300;
+                
+                // Final text special rule
+if (line.id === 'final-text') {
+
+    // Delay BEFORE showing final line
+    setTimeout(() => {
+
+        line.classList.remove('opacity-0', 'translate-y-[20px]');
+        line.classList.add('opacity-100', 'translate-y-0');
+
+// 🎯 LOCK MUSIC EXACTLY HERE
+        // Stronger impact animation
+        line.style.transform = 'scale(1.10)';
+        line.style.textShadow = '0 0 30px rgba(212,163,115,0.5)';
+
+        // Slow settle (emotional drop)
+        setTimeout(() => {
+            line.style.transform = 'scale(1.05)';
+        }, 2500);
+
+    }, actualDelay + 800); // EXTRA WAIT
+
+    return;
+}
+
+                line.style.transitionDelay = `${actualDelay}ms`;
+                
+                setTimeout(() => {
+                    line.classList.remove('opacity-0', 'translate-y-[20px]');
+                    line.classList.add('opacity-100', 'translate-y-0');
+                }, 50);
+            });
+
+// Section 10 (final ending) timing
+if (index === 11) {
+
+    // 🌙 Background fade
+    setTimeout(() => {
+        document.getElementById('sec-10-dimmer')
+            .classList.replace('opacity-0', 'opacity-100');
+    }, 1500);
+
+// 🎵 TRUE FADE OUT (to silence)
+setTimeout(() => {
+
+    let fade = setInterval(() => {
+
+        if (audio.volume > 0.01) {
+            audio.volume -= 0.01;
+        } else {
+            audio.volume = 0;
+            clearInterval(fade);
+
+            // ⏸ pause AFTER fade completes
+            audio.pause();
+        }
+
+    }, 120);
+
+}, 3500);
+
+    // 🔁 Replay button
+    setTimeout(() => {
+        const btn = document.getElementById('replay-btn');
+        btn.classList.remove('opacity-0', 'pointer-events-none');
+        btn.classList.add('opacity-100', 'pointer-events-auto');
+    }, 5000);
+}
+        }
+
+        // Reset text logic
+        function resetTextReveal(index) {
+            const section = document.getElementById(`sec-${index}`);
+            const lines = section.querySelectorAll('.reveal-text');
+            lines.forEach(line => {
+                line.style.transitionDelay = '0ms';
+                line.classList.remove('opacity-100', 'translate-y-0');
+                line.classList.add('opacity-0', 'translate-y-[20px]');
+                
+                if (line.id === 'final-text') {
+                    line.style.transform = 'scale(1)';
+                    line.style.textShadow = 'none';
+                }
+            });
+            
+            if(index === 10) {
+                const btn = document.getElementById('replay-btn');
+                btn.classList.remove('opacity-100', 'pointer-events-auto');
+                btn.classList.add('opacity-0', 'pointer-events-none');
+                
+                document.getElementById('sec-10-dimmer').classList.remove('opacity-100');
+                document.getElementById('sec-10-dimmer').classList.add('opacity-0');
+            }
+        }
+
+        // Main transition controller
+function goToSection(index) {
+
+console.log("Moving from", currentSection, "to", index);
+
+if (index < 0 || index >= totalSections) return;
+
+// 🔥 Allow first transition always
+if (index === currentSection) return;
+
+    isAnimating = true;
+
+    const oldSec = document.getElementById(`sec-${currentSection}`);
+    const newSec = document.getElementById(`sec-${index}`);
+
+    // Fade out old
+    oldSec.classList.remove('opacity-100', 'z-10', 'pointer-events-auto');
+    oldSec.classList.add('opacity-0', 'z-0', 'pointer-events-none');
+
+    resetTextReveal(currentSection);
+
+    // Update state EARLY
+    currentSection = index;
+    updateDots(currentSection);
+    updateVolume(currentSection);
+
+// 🎧 slow down before final line (cinematic effect)
+if (index === 10) {
+
+    // 🎧 smooth slowdown (no jerk)
+    let rate = audio.playbackRate;
+
+    let slow = setInterval(() => {
+        if (rate > 0.97) {
+            rate -= 0.005;
+            audio.playbackRate = rate;
+        } else {
+            clearInterval(slow);
+        }
+    }, 80);
+
+    // 🎧 soft volume dip
+    let vol = audio.volume;
+
+    let dip = setInterval(() => {
+        if (vol > 0.18) {
+            vol -= 0.01;
+            audio.volume = vol;
+        } else {
+            clearInterval(dip);
+        }
+    }, 120);
+}
+
+
+if (index !== 9 && audio.playbackRate !== 1) {
+
+    let restore = setInterval(() => {
+        if (audio.playbackRate < 1) {
+            audio.playbackRate += 0.005;
+        } else {
+            audio.playbackRate = 1;
+            clearInterval(restore);
+        }
+    }, 80);
+}
+
+
+    // Fade in new
+    newSec.classList.remove('opacity-0', 'z-0', 'pointer-events-none');
+    newSec.classList.add('opacity-100', 'z-10', 'pointer-events-auto');
+
+    // Trigger text reveal after transition
+    triggerTextReveal(currentSection);
+    // 🔥 IMPORTANT: unlock scroll independently
+setTimeout(() => {
+    isAnimating = false;
+}, 1200);
+}
+
+        // Input Handling
+let lastScrollTime = 0;
+
+
+const sectionDurations = [
+    4000,
+    7000,
+    7000,
+    7000,
+    10000,
+    7000,
+    14000,
+    9000,
+    13000,
+    9000,   // ✅ NEW anniversary
+    11000,  // old sec-9
+    4000    // final
+];
+
+
+function getSectionStayTime(index) {
+    return sectionDurations[index] || 7000;
+}
+
+
+function startAutoFlow() {
+
+    function nextStep() {
+
+        const stayTime = getSectionStayTime(currentSection);
+
+        setTimeout(() => {
+
+            if (currentSection < totalSections - 1) {
+                goToSection(currentSection + 1);
+                nextStep();
+            }
+
+        }, stayTime);
+
+    }
+
+    nextStep();
+}
+
+
+function startExperience() {
+
+    const welcome = document.getElementById('welcome-screen');
+
+    welcome.style.opacity = '0';
+
+    setTimeout(() => {
+        welcome.style.display = 'none';
+    }, 1000);
+
+    initAudio();
+
+setTimeout(() => {
+    triggerTextReveal(0);
+
+    // ⏳ wait before starting flow
+    setTimeout(() => {
+        startAutoFlow();
+    }, 2000);
+
+}, 800);
+}
+
+
+function restartExperience() {
+
+    // 🎵 Reset music completely
+    audio.pause();
+    audio.currentTime = 92;
+    audio.volume = 0;
+    audio.playbackRate = 1;
+    audioPlayed = false; // 🔥 IMPORTANT (allow re-init)
+
+    // 🧠 Reset sections
+    for (let i = 0; i < totalSections; i++) {
+        resetTextReveal(i);
+
+        const sec = document.getElementById(`sec-${i}`);
+        sec.classList.remove('opacity-100', 'z-10', 'pointer-events-auto');
+        sec.classList.add('opacity-0', 'z-0', 'pointer-events-none');
+    }
+
+    currentSection = 0;
+
+    // 🎯 SHOW WELCOME SCREEN AGAIN
+    const welcome = document.getElementById('welcome-screen');
+    welcome.style.display = 'flex';
+
+    setTimeout(() => {
+        welcome.style.opacity = '1';
+    }, 50);
+
+    // 🔁 RESET TYPEWRITER
+    nameEl.textContent = '';
+    i = 0;
+    cursor.style.opacity = '1';
+
+    document.getElementById('name-intro-text').style.transform = 'scale(1)';
+    document.getElementById('name-intro-text').style.textShadow = 'none';
+
+    sub.classList.remove('opacity-100');
+    sub.classList.add('opacity-0');
+
+    btn.classList.remove('opacity-100', 'pointer-events-auto');
+    btn.classList.add('opacity-0', 'pointer-events-none');
+
+    // 🔄 Restart typing animation
+    setTimeout(() => {
+        typeWriter();
+    }, 500);
+
+    // 🔁 Re-show subtext & button timing
+    setTimeout(() => {
+        sub.classList.remove('opacity-0');
+        sub.classList.add('opacity-100');
+    }, 2000);
+
+    setTimeout(() => {
+        btn.classList.remove('opacity-0', 'pointer-events-none');
+        btn.classList.add('opacity-100', 'pointer-events-auto');
+    }, 3500);
+}
+
+// window.addEventListener('wheel', (e) => {
+//     if (isAnimating) return;
+
+//     const now = Date.now();
+//     if (now - lastScrollTime < 900) return;
+
+//     if (e.deltaY > 10) {
+//         goToSection(currentSection + 1);
+//         lastScrollTime = now;
+//     } 
+//     else if (e.deltaY < -10) {
+//         goToSection(currentSection - 1);
+//         lastScrollTime = now;
+//     }
+// });
+
+        let touchStartY = 0;
+        let touchEndY = 0;
+
+// window.addEventListener('touchstart', e => {
+//     touchStartY = e.changedTouches[0].screenY;
+// }, { passive: true });
+
+// window.addEventListener('touchend', e => {
+//     touchEndY = e.changedTouches[0].screenY;
+//     if (isAnimating) return;
+//     const threshold = 50;
+//     if (touchStartY - touchEndY > threshold) goToSection(currentSection + 1);
+//     else if (touchEndY - touchStartY > threshold) goToSection(currentSection - 1);
+// }, { passive: true });
+
+        // Timeline Node Logic
+function activateNode(el) {
+
+    el.style.borderColor = '#d4a373';
+    el.style.backgroundColor = 'rgba(212,163,115,0.2)';
+    el.style.boxShadow = '0 0 20px rgba(212,163,115,0.5)';
+    el.style.transform = 'translateX(-50%) scale(1.4)';
+
+    // slight delay before opening card
+    setTimeout(() => {
+        el.style.transform = 'translateX(-50%) scale(1)';
+        openCard();
+    }, 200);
+}
+
+        function openCard() {
+            const card = document.getElementById('timeline-card');
+            const content = document.getElementById('card-content');
+            card.classList.remove('opacity-0', 'pointer-events-none');
+            card.classList.add('opacity-100', 'pointer-events-auto');
+            setTimeout(() => {
+                content.classList.remove('scale-95');
+                content.classList.add('scale-100', 'translate-y-0');
+            }, 50);
+        }
+
+        function closeCard() {
+            const card = document.getElementById('timeline-card');
+            const content = document.getElementById('card-content');
+            
+            // Reset nodes
+            document.querySelectorAll('.node-btn').forEach(btn => {
+                btn.style.borderColor = '#2a2a2a';
+                btn.style.backgroundColor = '#1a1a1a';
+                btn.style.boxShadow = 'none';
+                btn.style.transform = 'translateX(-50%) scale(1)';
+            });
+
+            content.classList.remove('scale-100', 'translate-y-0');
+            content.classList.add('scale-95', 'translate-y-3');
+            setTimeout(() => {
+                card.classList.remove('opacity-100', 'pointer-events-auto');
+                card.classList.add('opacity-0', 'pointer-events-none');
+            }, 300);
+        }
+
+// 💌 LETTER OPEN
+function openLetter() {
+    const overlay = document.getElementById('letter-overlay');
+    const content = document.getElementById('letter-content');
+
+    overlay.classList.remove('opacity-0', 'pointer-events-none');
+    overlay.classList.add('opacity-100', 'pointer-events-auto');
+    audio.volume *= 0.6; // 🎧 soften music when reading
+    audio.playbackRate = 0.96;
+
+setTimeout(() => {
+    content.classList.remove('scale-95', 'translate-y-6');
+    content.classList.add('scale-100', 'translate-y-0');
+
+    // ✨ LINE-BY-LINE REVEAL
+const lines = document.querySelectorAll('.letter-line');
+
+let currentLine = 0;
+
+function typeLine() {
+
+    if (currentLine >= lines.length) return;
+
+    const line = lines[currentLine];
+    const text = line.getAttribute('data-text') || line.textContent;
+
+    line.setAttribute('data-text', text); // store original
+    line.textContent = '';
+
+    line.style.opacity = '1';
+
+    // ✨ cursor
+    const cursor = document.createElement('span');
+    cursor.textContent = '|';
+    cursor.className = 'inline-block ml-1 opacity-70 animate-pulse';
+    line.appendChild(cursor);
+
+    let i = 0;
+
+    // 🎯 SPEED BASED ON EMOTION
+    let speed = 40;
+
+    if (text.includes("important") || text.includes("rahogi")) {
+        speed = 65; // slow → emotional lines
+    } 
+    else if (text.includes("...")) {
+        speed = 55; // medium slow → pause feeling
+    } 
+    else if (text.length < 15) {
+        speed = 35; // faster for short lines
+    }
+
+    const typing = setInterval(() => {
+
+        if (i < text.length) {
+
+            cursor.insertAdjacentText('beforebegin', text.charAt(i));
+            i++;
+
+        } else {
+
+            clearInterval(typing);
+
+            setTimeout(() => {
+                cursor.remove();
+
+                currentLine++;
+
+                // ⏳ GAP BEFORE NEXT LINE (emotion control)
+                let gap = 500;
+
+                if (text.includes("important") || text.includes("rahogi")) {
+                    gap = 1200; // strong pause
+                } 
+                else if (text.includes("...")) {
+                    gap = 900;
+                }
+
+                setTimeout(typeLine, gap);
+
+            }, 300);
+        }
+
+    }, speed);
+}
+
+// 🚀 start sequence
+typeLine();
+
+}, 500);
+}
+
+// 💌 LETTER CLOSE
+function closeLetter() {
+    const overlay = document.getElementById('letter-overlay');
+    const content = document.getElementById('letter-content');
+
+    content.classList.remove('scale-100', 'translate-y-0');
+    content.classList.add('scale-95', 'translate-y-6');
+
+    // 🔥 ADD HERE (THIS EXACT SPOT)
+const lines = document.querySelectorAll('.letter-line');
+
+lines.forEach(line => {
+
+    const original = line.getAttribute('data-text');
+    if (original) {
+        line.textContent = original;
+    }
+
+    line.classList.remove('opacity-100', 'translate-y-0');
+    line.classList.add('opacity-0', 'translate-y-4');
+
+});
+
+    setTimeout(() => {
+        overlay.classList.remove('opacity-100', 'pointer-events-auto');
+        overlay.classList.add('opacity-0', 'pointer-events-none');
+    }, 400);
+}
+</script>
+
+</body></html>
