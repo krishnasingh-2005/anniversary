@@ -44,18 +44,16 @@
             height: 100%;
         }
 
-        section {
-            min-height: 100dvh; /* 🔥 mobile safe height */
-        }
         p {
-            word-break: break-word;
+            word-break: normal;
+            white-space: normal;
         }
     </style>
 </head>
 <body class="bg-[#0b0b0b] text-[#f5f5f5] min-h-screen w-full overflow-hidden antialiased font-sans selection:bg-[#d4a373]/30 flex flex-col items-center justify-center">
 
     <!-- Desktop Cursor Glow -->
-    <div id="cursor-glow" class="cursor-glow fixed w-[400px] h-[400px] rounded-full pointer-events-none z-[100] hidden md:block -translate-x-1/2 -translate-y-1/2"></div>
+    <div id="cursor-glow" class="cursor-glow fixed w-[400px] h-[400px] rounded-full pointer-events-none z-[100] block -translate-x-1/2 -translate-y-1/2"></div>
 
     <!-- Ambient Audio Placeholder -->
     <audio id="bg-music" loop="">
@@ -66,19 +64,19 @@
     <div id="loader" class="fixed inset-0 bg-[#0f0f0f] z-[100] transition-opacity duration-[3000ms] ease-in-out pointer-events-none"></div>
 
     <!-- Navigation Dots -->
-    <div id="nav-dots" class="fixed right-6 md:right-10 top-1/2 -translate-y-1/2 flex flex-col gap-5 z-50 mix-blend-screen hidden md:flex">
+    <div id="nav-dots" class="fixed right-10 top-1/2 -translate-y-1/2 flex-col gap-5 z-50 mix-blend-screen flex">
         <!-- Dots injected via JS -->
     </div>
 
 
-<section id="welcome-screen" class="fixed inset-0 flex flex-col items-center justify-center bg-black/90 backdrop-blur-sm z-[200] text-center px-5 sm:px-6 transition-opacity duration-1000">
+<section id="welcome-screen" class="fixed inset-0 flex flex-col items-center justify-center bg-black/90 backdrop-blur-sm z-[200] text-center px-6 transition-opacity duration-1000">
 
 <div class="space-y-10">
 
     <!-- Name Reveal -->
 <h1 id="name-intro-text"
     data-name="Malkin Ji"
-    class="text-[#d4a373] text-3xl md:text-5xl font-serif tracking-wide flex items-center justify-center gap-1">
+    class="text-[#d4a373] text-4xl font-serif tracking-wide flex items-center justify-center gap-1">
 
     <span id="typed-name"></span>
     <span id="cursor" class="animate-pulse">|</span>
@@ -94,7 +92,7 @@
     <!-- Button -->
     <button id="start-btn"
         onclick="startExperience()"
-        class="opacity-0 pointer-events-none mt-6 px-5 sm:px-6 py-3 border border-[#2a2a2a] text-[#f5f5f5] text-sm tracking-widest hover:border-[#d4a373] transition-all duration-500">
+        class="opacity-0 pointer-events-none mt-6 px-6 py-3 border border-[#2a2a2a] text-[#f5f5f5] text-sm tracking-widest hover:border-[#d4a373] transition-all duration-500">
         start karein?
     </button>
 
@@ -104,46 +102,46 @@
 
     <!-- Section 0: Entry Screen -->
    <section id="sec-0" class="fixed inset-0 flex flex-col items-center justify-center transition-opacity duration-[1000ms] ease-in-out z-10 opacity-100 pointer-events-auto relaxed-text backdrop-blur-[1px] bg-[#0b0b0b]">
-        <div class="max-w-[600px] w-full text-center space-y-6 px-5 sm:px-6">
-            <h1 class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-serif font-medium text-3xl md:text-5xl tracking-tight text-[#f5f5f5]">For you...</h1>
-            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-sm md:text-base text-[#a1a1aa] tracking-widest">8 April</p>
+        <div class="max-w-[600px] w-full text-center space-y-6 px-6">
+            <h1 class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-serif font-medium text-4xl tracking-tight text-[#f5f5f5]">For you...</h1>
+            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-base text-[#a1a1aa] tracking-widest">8 April</p>
         </div>
     </section>
 
     <!-- Section 1: Beginning -->
     <section id="sec-1" class="fixed inset-0 flex flex-col items-center justify-center transition-opacity duration-[1000ms] ease-in-out z-0 opacity-0 pointer-events-none relaxed-text backdrop-blur-[1px] bg-[#0b0b0b]">
-        <div class="max-w-[600px] w-full text-center space-y-10 px-5 sm:px-6">
-            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-serif font-medium text-xl sm:text-2xl md:text-4xl tracking-tight text-[#f5f5f5]">8 April 2025...</p>
-            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-base md:text-lg text-[#a1a1aa]">shayad raat ke 12 ya 2 baje ke aas paas</p>
-            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-base md:text-lg text-[#a1a1aa]">sab kuch ek normal din ki tarah hi start hua tha</p>
-            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-base md:text-lg text-[#a1a1aa]">kuch special nahi…</p>
-            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-base md:text-lg text-[#a1a1aa]">kuch plan bhi nahi tha</p>
+        <div class="max-w-[600px] w-full text-center space-y-10 px-6">
+            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-serif font-medium text-2xl tracking-tight text-[#f5f5f5]">8 April 2025...</p>
+            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-lg text-[#a1a1aa]">shayad raat ke 12 ya 2 baje ke aas paas</p>
+            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-lg text-[#a1a1aa]">sab kuch ek normal din ki tarah hi start hua tha</p>
+            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-lg text-[#a1a1aa]">kuch special nahi…</p>
+            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-lg text-[#a1a1aa]">kuch plan bhi nahi tha</p>
         </div>
     </section>
 
     <!-- Section 2: First Connection -->
     <section id="sec-2" class="fixed inset-0 flex flex-col items-center justify-center transition-opacity duration-[1000ms] ease-in-out z-0 opacity-0 pointer-events-none relaxed-text backdrop-blur-[1px] bg-[#0b0b0b]">
-        <div class="max-w-[600px] w-full text-center space-y-10 px-5 sm:px-6">
-            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-serif font-medium text-xl sm:text-2xl md:text-4xl tracking-tight text-[#f5f5f5]">bas baat ho rahi thi…</p>
-            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-base md:text-lg text-[#a1a1aa]">kuch khas bhi nahi…</p>
-            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-base md:text-lg text-[#a1a1aa]">par pata nahi kyun,</p>
-            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-base md:text-lg text-[#a1a1aa]">main un baaton ka wait karne laga tha</p>
+        <div class="max-w-[600px] w-full text-center space-y-10 px-6">
+            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-serif font-medium text-2xl tracking-tight text-[#f5f5f5]">bas baat ho rahi thi…</p>
+            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-lg text-[#a1a1aa]">kuch khas bhi nahi…</p>
+            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-lg text-[#a1a1aa]">par pata nahi kyun,</p>
+            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-lg text-[#a1a1aa]">main un baaton ka wait karne laga tha</p>
         </div>
     </section>
 
     <!-- Section 3: Something Was There -->
     <section id="sec-3" class="fixed inset-0 flex flex-col items-center justify-center transition-opacity duration-[1000ms] ease-in-out z-0 opacity-0 pointer-events-none relaxed-text backdrop-blur-[1px] bg-[#0b0b0b]">
-        <div class="max-w-[600px] w-full text-center space-y-10 px-5 sm:px-6">
-            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-serif font-medium text-xl sm:text-2xl md:text-4xl tracking-tight text-[#f5f5f5]">cheezain tab bhi thi…</p>
-            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-base md:text-lg text-[#a1a1aa]">maine apne tareeke se kaafi kuch keh diya tha</p>
-            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-base md:text-lg text-[#a1a1aa]">shayad directly nahi…</p>
-            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-base md:text-lg text-[#a1a1aa]">par tha sab</p>
+        <div class="max-w-[600px] w-full text-center space-y-10 px-6">
+            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-serif font-medium text-2xl tracking-tight text-[#f5f5f5]">cheezain tab bhi thi…</p>
+            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-lg text-[#a1a1aa]">maine apne tareeke se kaafi kuch keh diya tha</p>
+            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-lg text-[#a1a1aa]">shayad directly nahi…</p>
+            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-lg text-[#a1a1aa]">par tha sab</p>
         </div>
     </section>
 
 <!-- Section 4: Her POV -->
 <section id="sec-4" class="fixed inset-0 flex flex-col items-center justify-center transition-opacity duration-[1000ms] ease-in-out z-0 opacity-0 pointer-events-none relaxed-text backdrop-blur-[1px] bg-[#0b0b0b]">
-    <div class="max-w-[600px] w-full text-center space-y-10 px-5 sm:px-6">
+    <div class="max-w-[600px] w-full text-center space-y-10 px-6">
 
         <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out">shayad tum soch rahi hogi…</p>
         <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out">ye sab itna serious kaise ho gaya</p>
@@ -157,65 +155,65 @@
 
     <!-- Section 5: The Night -->
     <section id="sec-5" class="fixed inset-0 flex flex-col items-center justify-center transition-opacity duration-[1000ms] ease-in-out z-0 opacity-0 pointer-events-none relaxed-text backdrop-blur-[1px] bg-[#0b0b0b]">
-        <div class="max-w-[600px] w-full text-center space-y-10 px-5 sm:px-6">
-            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-serif font-medium text-xl sm:text-2xl md:text-4xl tracking-tight text-[#f5f5f5]">phir uss raat…</p>
-            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-base md:text-lg text-[#a1a1aa]">tumne bhi keh diya</p>
-            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-base md:text-lg text-[#a1a1aa]">aur pata nahi kyun…</p>
-            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-base md:text-lg text-[#a1a1aa]">uske baad sab alag lagne laga</p>
+        <div class="max-w-[600px] w-full text-center space-y-10 px-6">
+            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-serif font-medium text-2xl tracking-tight text-[#f5f5f5]">phir uss raat…</p>
+            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-lg text-[#a1a1aa]">tumne bhi keh diya</p>
+            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-lg text-[#a1a1aa]">aur pata nahi kyun…</p>
+            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-lg text-[#a1a1aa]">uske baad sab alag lagne laga</p>
         </div>
     </section>
 
     <!-- Section 6: Memory Timeline -->
     <section id="sec-6" class="fixed inset-0 flex flex-col items-center justify-center transition-opacity duration-[1000ms] ease-in-out z-0 opacity-0 pointer-events-none backdrop-blur-[1px] bg-[#0b0b0b]">
-        <div class="relative w-full max-w-[600px] mx-auto py-14 md:py-16 px-5 sm:px-6">
+        <div class="relative w-full max-w-[600px] mx-auto py-16 px-6">
             <!-- Center Line -->
-            <div class="absolute left-4 md:left-1/2 top-14 bottom-14 w-px bg-[#2a2a2a] -translate-x-1/2"></div>
+            <div class="absolute left-1/2 -translate-x-1/2 top-14 bottom-14 w-px bg-[#2a2a2a] -translate-x-1/2"></div>
             
             <!-- Nodes Container -->
             <div class="flex flex-col gap-16 w-full">
                 <!-- Node 1 -->
                 <div class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out relative flex items-center justify-between w-full group">
-                    <div class="w-full md:w-1/2 pr-4 md:pr-8 text-left md:text-right">
-                        <p class="font-light text-xs md:text-sm text-[#a1a1aa]">uss raat… 12 ya shayad 2 baje</p>
+                    <div class="w-1/2 pr-8 text-left">
+                        <p class="font-light text-sm text-[#a1a1aa]">uss raat… 12 ya shayad 2 baje</p>
                     </div>
-                    <button class="node-btn absolute left-4 md:left-1/2 -translate-x-1/2 w-[14px] h-[14px] rounded-full bg-[#1a1a1a] border border-[#2a2a2a] transition-all duration-500 z-10 outline-none cursor-pointer" onclick="activateNode(this);"></button>
-                    <div class="w-full md:w-1/2 pl-4 md:pl-8"></div>
+                    <button class="node-btn absolute left-1/2 -translate-x-1/2 w-[14px] h-[14px] rounded-full bg-[#1a1a1a] border border-[#2a2a2a] transition-all duration-500 z-10 outline-none cursor-pointer" onclick="activateNode(this);"></button>
+                    <div class="w-1/2 pl-8"></div>
                 </div>
 
                 <!-- Node 2 -->
                 <div class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out relative flex items-center justify-between w-full group">
-                    <div class="w-full md:w-1/2 pr-4 md:pr-8"></div>
-                    <button class="node-btn absolute left-4 md:left-1/2 -translate-x-1/2 w-[14px] h-[14px] rounded-full bg-[#1a1a1a] border border-[#2a2a2a] transition-all duration-500 z-10 outline-none cursor-pointer" onclick="activateNode(this);"></button>
-                    <div class="w-full md:w-1/2 pl-4 md:pl-8 text-left">
-                        <p class="font-light text-xs md:text-sm text-[#a1a1aa]">random late night baatein</p>
+                    <div class="w-1/2 pr-8"></div>
+                    <button class="node-btn absolute left-1/2 -translate-x-1/2 w-[14px] h-[14px] rounded-full bg-[#1a1a1a] border border-[#2a2a2a] transition-all duration-500 z-10 outline-none cursor-pointer" onclick="activateNode(this);"></button>
+                    <div class="w-1/2 pl-8 text-left">
+                        <p class="font-light text-sm text-[#a1a1aa]">random late night baatein</p>
                     </div>
                 </div>
 
                 <!-- Node 3 -->
                 <div class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out relative flex items-center justify-between w-full group">
-                    <div class="w-full md:w-1/2 pr-4 md:pr-8 text-left md:text-right">
-                        <p class="font-light text-xs md:text-sm text-[#a1a1aa]">chhoti chhoti baatein jinka koi matlab nahi hota tha</p>
+                    <div class="w-1/2 pr-8 text-left">
+                        <p class="font-light text-sm text-[#a1a1aa]">chhoti chhoti baatein jinka koi matlab nahi hota tha</p>
                     </div>
-                    <button class="node-btn absolute left-4 md:left-1/2 -translate-x-1/2 w-[14px] h-[14px] rounded-full bg-[#1a1a1a] border border-[#2a2a2a] transition-all duration-500 z-10 outline-none cursor-pointer" onclick="activateNode(this);"></button>
-                    <div class="w-full md:w-1/2 pl-4 md:pl-8"></div>
+                    <button class="node-btn absolute left-1/2 -translate-x-1/2 w-[14px] h-[14px] rounded-full bg-[#1a1a1a] border border-[#2a2a2a] transition-all duration-500 z-10 outline-none cursor-pointer" onclick="activateNode(this);"></button>
+                    <div class="w-1/2 pl-8"></div>
                 </div>
 
                 <!-- Node 4 -->
                 <div class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out relative flex items-center justify-between w-full group">
-                    <div class="w-full md:w-1/2 pr-4 md:pr-8"></div>
-                    <button class="node-btn absolute left-4 md:left-1/2 -translate-x-1/2 w-[14px] h-[14px] rounded-full bg-[#1a1a1a] border border-[#2a2a2a] transition-all duration-500 z-10 outline-none cursor-pointer" onclick="activateNode(this);"></button>
-                    <div class="w-full md:w-1/2 pl-4 md:pl-8 text-left">
-                        <p class="font-light text-xs md:text-sm text-[#a1a1aa]">stupid jokes jo sirf hume samajh aate the</p>
+                    <div class="w-1/2 pr-8"></div>
+                    <button class="node-btn absolute left-1/2 -translate-x-1/2 w-[14px] h-[14px] rounded-full bg-[#1a1a1a] border border-[#2a2a2a] transition-all duration-500 z-10 outline-none cursor-pointer" onclick="activateNode(this);"></button>
+                    <div class="w-1/2 pl-8 text-left">
+                        <p class="font-light text-sm text-[#a1a1aa]">stupid jokes jo sirf hume samajh aate the</p>
                     </div>
                 </div>
 
                 <!-- Node 5 -->
                 <div class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out relative flex items-center justify-between w-full group">
-                    <div class="w-full md:w-1/2 pr-4 md:pr-8 text-left md:text-right">
-                        <p class="font-light text-xs md:text-sm text-[#a1a1aa]">baar baar phone check karna… sirf tumhare liye</p>
+                    <div class="w-1/2 pr-8 text-left">
+                        <p class="font-light text-sm text-[#a1a1aa]">baar baar phone check karna… sirf tumhare liye</p>
                     </div>
-                    <button class="node-btn absolute left-4 md:left-1/2 -translate-x-1/2 w-[14px] h-[14px] rounded-full bg-[#1a1a1a] border border-[#2a2a2a] transition-all duration-500 z-10 outline-none cursor-pointer" onclick="activateNode(this);"></button>
-                    <div class="w-full md:w-1/2 pl-4 md:pl-8"></div>
+                    <button class="node-btn absolute left-1/2 -translate-x-1/2 w-[14px] h-[14px] rounded-full bg-[#1a1a1a] border border-[#2a2a2a] transition-all duration-500 z-10 outline-none cursor-pointer" onclick="activateNode(this);"></button>
+                    <div class="w-1/2 pl-8"></div>
                 </div>
             </div>
         </div>
@@ -224,7 +222,7 @@
         <div id="timeline-card" class="absolute inset-0 z-50 flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-700 bg-[#0f0f0f]/70 backdrop-blur-md">
             <div class="absolute inset-0 cursor-pointer" onclick="closeCard()"></div>
             <div id="card-content" class="relative bg-[#181818] rounded-xl shadow-[0_10px_40px_rgba(0,0,0,0.6)] px-10 py-12 max-w-[340px] text-center border border-[#2a2a2a] transform scale-95 translate-y-3 transition-all duration-700 mx-6">
-                <p class="text-[#f5f5f5] text-sm md:text-base font-light leading-[2.2] tracking-wide">
+                <p class="text-[#f5f5f5] text-base font-light leading-[2.2] tracking-wide">
                     <span class="block">mujhe abhi bhi yaad hai wo moment…</span>
                     <span class="block">maine apne tareeke se pehle hi keh diya tha</span>
                     <span class="block">par tumse sunna…</span>
@@ -236,17 +234,17 @@
 
     <!-- Section 7: Realisation (Emotional Peak) -->
     <section id="sec-7" class="fixed inset-0 flex flex-col items-center justify-center transition-opacity duration-[1000ms] ease-in-out z-0 opacity-0 pointer-events-none relaxed-text backdrop-blur-[1px] bg-[#0b0b0b]">
-        <div class="max-w-[600px] w-full text-center space-y-12 px-5 sm:px-6">
-            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-serif font-medium text-xl sm:text-2xl md:text-4xl tracking-tight text-[#f5f5f5]">maine kabhi plan nahi kiya tha…</p>
-            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-base md:text-lg text-[#a1a1aa]">par dheere dheere…</p>
-            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-base md:text-lg text-[#a1a1aa]">tum wo ban gayi</p>
-            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-base md:text-lg text-[#a1a1aa]">jiski main shayad jitna hona chahiye usse zyada care karta hoon</p>
+        <div class="max-w-[600px] w-full text-center space-y-12 px-6">
+            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-serif font-medium text-2xl tracking-tight text-[#f5f5f5]">maine kabhi plan nahi kiya tha…</p>
+            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-lg text-[#a1a1aa]">par dheere dheere…</p>
+            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-lg text-[#a1a1aa]">tum wo ban gayi</p>
+            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-lg text-[#a1a1aa]">jiski main shayad jitna hona chahiye usse zyada care karta hoon</p>
         </div>
     </section>
 
 <!-- Section 8: Small Things -->
 <section id="sec-8" class="fixed inset-0 flex flex-col items-center justify-center transition-opacity duration-[1000ms] ease-in-out z-0 opacity-0 pointer-events-none relaxed-text backdrop-blur-[1px] bg-[#0b0b0b]">
-    <div class="max-w-[600px] w-full text-center space-y-10 px-5 sm:px-6">
+    <div class="max-w-[600px] w-full text-center space-y-10 px-6">
 
         <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out">mujhe lagta tha baatein hi important hoti hain…</p>
         <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out">par tumse baat karke samajh aaya…</p>
@@ -262,9 +260,9 @@
 <!-- Section 9: Anniversary -->
 <section id="sec-9" class="fixed inset-0 flex flex-col items-center justify-center transition-opacity duration-[1000ms] ease-in-out z-0 opacity-0 pointer-events-none relaxed-text backdrop-blur-[1px] bg-[#0b0b0b]">
 
-    <div class="max-w-[600px] w-full text-center space-y-10 px-5 sm:px-6">
+    <div class="max-w-[600px] w-full text-center space-y-10 px-6">
 
-        <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-serif text-xl sm:text-2xl md:text-4xl">
+        <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-serif text-2xl">
             happy anniversary
         </p>
 
@@ -292,14 +290,14 @@
 
     <!-- Section 10: Ending -->
     <section id="sec-10" class="fixed inset-0 flex flex-col items-center justify-center transition-opacity duration-[1000ms] ease-in-out z-0 opacity-0 pointer-events-none relaxed-text backdrop-blur-[1px] bg-[#0b0b0b]">
-        <div class="max-w-[600px] w-full text-center space-y-10 px-5 sm:px-6">
-            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-serif font-medium text-xl sm:text-2xl md:text-4xl tracking-tight text-[#f5f5f5]">1 saal</p>
-            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-base md:text-lg text-[#a1a1aa]">365 din</p>
-            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-base md:text-lg text-[#a1a1aa]">aur pata nahi kaise…</p>
-            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-base md:text-lg text-[#a1a1aa]">abhi bhi sab naya sa lagta hai</p>
+        <div class="max-w-[600px] w-full text-center space-y-10 px-6">
+            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-serif font-medium text-2xl tracking-tight text-[#f5f5f5]">1 saal</p>
+            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-lg text-[#a1a1aa]">365 din</p>
+            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-lg text-[#a1a1aa]">aur pata nahi kaise…</p>
+            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-lg text-[#a1a1aa]">abhi bhi sab naya sa lagta hai</p>
             
             <div class="pt-12">
-                <p id="final-text" class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-out font-serif font-medium text-3xl md:text-5xl tracking-tight text-[#d4a373] transform scale-100">
+                <p id="final-text" class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-out font-serif font-medium text-4xl tracking-tight text-[#d4a373] transform scale-100">
                     accha lagta hai… ki tum ho
                 </p>
             </div>
@@ -309,11 +307,11 @@
     <!-- Section 11: Final Closing -->
     <section id="sec-11" class="fixed inset-0 flex flex-col items-center justify-center transition-opacity duration-[1000ms] ease-in-out z-0 opacity-0 pointer-events-none backdrop-blur-[1px] bg-[#0b0b0b]">
         <div id="sec-10-dimmer" class="absolute inset-0 bg-black/50 opacity-0 transition-opacity duration-[3000ms] ease-in-out z-[-1]"></div>
-        <div class="max-w-[600px] w-full text-center px-5 sm:px-6 flex flex-col items-center">
-            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-serif font-medium text-xl sm:text-2xl md:text-4xl tracking-tight text-[#f5f5f5]">abhi to bas shuru kiya hai…</p>
+        <div class="max-w-[600px] w-full text-center px-6 flex flex-col items-center">
+            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-serif font-medium text-2xl tracking-tight text-[#f5f5f5]">abhi to bas shuru kiya hai…</p>
 
 <button onclick="openLetter()" 
-    class="relative group px-5 sm:px-6 py-3 rounded-full border border-[#d4a373]/30 text-[#d4a373] text-sm tracking-widest transition-all duration-500 overflow-hidden">
+    class="relative group px-6 py-3 rounded-full border border-[#d4a373]/30 text-[#d4a373] text-sm tracking-widest transition-all duration-500 overflow-hidden">
 
     <!-- ✨ NEW: outer glow ring -->
     <span class="absolute -inset-[1px] rounded-full opacity-0 group-hover:opacity-100 transition duration-700 border border-[#d4a373]/40"></span>
@@ -351,7 +349,7 @@
          class="relative w-full max-w-[500px] text-center transform scale-95 translate-y-6 transition-all duration-[1500ms] ease-in-out">
 
 <p id="letter-lines"
-   class="text-[#f5f5f5] text-base md:text-lg font-light leading-[2] md:leading-[2.2] tracking-wide">
+   class="text-[#f5f5f5] text-lg font-light leading-[2.2] tracking-wide">
 
     <span class="letter-line block opacity-0 translate-y-4">kab shuru hua…</span>
     <span class="letter-line block opacity-0 translate-y-4">pata nahi</span>
