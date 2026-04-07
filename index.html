@@ -401,6 +401,8 @@
         let currentSection = 0;
         let isAnimating = false;
         let audioPlayed = false;
+        let letterAnimatedOnce = false;
+
         const audio = document.getElementById('bg-music');
         // 🔥 TYPEWRITER WITH CURSOR (FINAL FIX)
         const nameEl = document.getElementById('typed-name');
@@ -825,6 +827,8 @@ setTimeout(() => {
 
 function restartExperience() {
 
+     letterAnimatedOnce = false;
+
     // 🎵 Reset music completely
     audio.pause();
     audio.currentTime = 92;
@@ -960,96 +964,95 @@ function activateNode(el) {
         }
 
 // 💌 LETTER OPEN
+// 💌 LETTER OPEN
 function openLetter() {
     const overlay = document.getElementById('letter-overlay');
     const content = document.getElementById('letter-content');
 
     overlay.classList.remove('opacity-0', 'pointer-events-none');
     overlay.classList.add('opacity-100', 'pointer-events-auto');
-    audio.volume *= 0.6; // 🎧 soften music when reading
+
+    audio.volume *= 0.6;
     audio.playbackRate = 0.96;
 
-setTimeout(() => {
-    content.classList.remove('scale-95', 'translate-y-6');
-    content.classList.add('scale-100', 'translate-y-0');
+    const lines = document.querySelectorAll('.letter-line');
 
-    // ✨ LINE-BY-LINE REVEAL
-const lines = document.querySelectorAll('.letter-line');
+    // ✅ IF already opened once → NO animation
+    if (letterAnimatedOnce) {
 
-let currentLine = 0;
+        content.classList.remove('scale-95', 'translate-y-6');
+        content.classList.add('scale-100', 'translate-y-0');
 
-function typeLine() {
+        lines.forEach(line => {
+            const original = line.getAttribute('data-text') || line.textContent;
+            line.textContent = original;
+            line.style.opacity = '1';
+        });
 
-    if (currentLine >= lines.length) return;
-
-    const line = lines[currentLine];
-    const text = line.getAttribute('data-text') || line.textContent;
-
-    line.setAttribute('data-text', text); // store original
-    line.textContent = '';
-
-    line.style.opacity = '1';
-
-    // ✨ cursor
-    const cursor = document.createElement('span');
-    cursor.textContent = '|';
-    cursor.className = 'inline-block ml-1 opacity-70 animate-pulse';
-    line.appendChild(cursor);
-
-    let i = 0;
-
-    // 🎯 SPEED BASED ON EMOTION
-    let speed = 40;
-
-    if (text.includes("important") || text.includes("rahogi")) {
-        speed = 65; // slow → emotional lines
-    } 
-    else if (text.includes("...")) {
-        speed = 55; // medium slow → pause feeling
-    } 
-    else if (text.length < 15) {
-        speed = 35; // faster for short lines
+        return;
     }
 
-    const typing = setInterval(() => {
+    // 🔥 FIRST TIME → RUN ANIMATION
+    letterAnimatedOnce = true;
 
-        if (i < text.length) {
+    setTimeout(() => {
+        content.classList.remove('scale-95', 'translate-y-6');
+        content.classList.add('scale-100', 'translate-y-0');
 
-            cursor.insertAdjacentText('beforebegin', text.charAt(i));
-            i++;
+        let currentLine = 0;
 
-        } else {
+        function typeLine() {
 
-            clearInterval(typing);
+            if (currentLine >= lines.length) return;
 
-            setTimeout(() => {
-                cursor.remove();
+            const line = lines[currentLine];
+            const text = line.getAttribute('data-text') || line.textContent;
 
-                currentLine++;
+            line.setAttribute('data-text', text);
+            line.textContent = '';
+            line.style.opacity = '1';
 
-                // ⏳ GAP BEFORE NEXT LINE (emotion control)
-                let gap = 500;
+            const cursor = document.createElement('span');
+            cursor.textContent = '|';
+            cursor.className = 'inline-block ml-1 opacity-70 animate-pulse';
+            line.appendChild(cursor);
 
-                if (text.includes("important") || text.includes("rahogi")) {
-                    gap = 1200; // strong pause
-                } 
-                else if (text.includes("...")) {
-                    gap = 900;
+            let i = 0;
+            let speed = 40;
+
+            if (text.includes("important") || text.includes("rahogi")) speed = 65;
+            else if (text.includes("...")) speed = 55;
+            else if (text.length < 15) speed = 35;
+
+            const typing = setInterval(() => {
+
+                if (i < text.length) {
+                    cursor.insertAdjacentText('beforebegin', text.charAt(i));
+                    i++;
+                } else {
+                    clearInterval(typing);
+
+                    setTimeout(() => {
+                        cursor.remove();
+                        currentLine++;
+
+                        let gap = 500;
+                        if (text.includes("important") || text.includes("rahogi")) gap = 1200;
+                        else if (text.includes("...")) gap = 900;
+
+                        setTimeout(typeLine, gap);
+
+                    }, 300);
                 }
 
-                setTimeout(typeLine, gap);
-
-            }, 300);
+            }, speed);
         }
 
-    }, speed);
+        typeLine();
+
+    }, 500);
 }
 
-// 🚀 start sequence
-typeLine();
-
-}, 500);
-}
 
 // 💌 LETTER CLOSE
 function closeLetter() {
