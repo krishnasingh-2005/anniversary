@@ -1,6 +1,6 @@
 <html lang="en"><head>
     <meta charset="UTF-8">
-    <meta name="viewport">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>For You</title>
     
     <!-- Fonts: Playfair Display (Serif) & Inter (Sans) -->
@@ -15,6 +15,9 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
+        html {
+            font-size: clamp(14px, 1.2vw, 18px);
+        }
         /* Slow Gradient Shift */
         @keyframes bg-shift {
             0% { background-position: 0% 0%; }
