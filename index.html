@@ -1,6 +1,6 @@
 <html lang="en"><head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=1024">
     <title>For You</title>
     
     <!-- Fonts: Playfair Display (Serif) & Inter (Sans) -->
@@ -35,7 +35,8 @@
 
         /* Base relaxed line heights */
         .relaxed-text p {
-            line-height: 2;
+            line-height: 1.6;
+            display: block;
         }
         section {
             transition: opacity 1s ease-in-out, filter 1s ease-in-out;
@@ -47,6 +48,8 @@
         p {
             word-break: normal;
             white-space: normal;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
         }
     </style>
 </head>
@@ -103,39 +106,39 @@
     <!-- Section 0: Entry Screen -->
    <section id="sec-0" class="fixed inset-0 flex flex-col items-center justify-center transition-opacity duration-[1000ms] ease-in-out z-10 opacity-100 pointer-events-auto relaxed-text backdrop-blur-[1px] bg-[#0b0b0b]">
         <div class="max-w-[600px] w-full text-center space-y-6 px-6">
-            <h1 class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-serif font-medium text-4xl tracking-tight text-[#f5f5f5]">For you...</h1>
-            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-base text-[#a1a1aa] tracking-widest">8 April</p>
+            <h1 class="reveal-text opacity-0 translate-y-5 transition-all duration-[1500ms] ease-in-out font-serif font-medium text-4xl tracking-tight text-[#f5f5f5]">For you...</h1>
+            <p class="reveal-text opacity-0 translate-y-5 transition-all duration-[1500ms] ease-in-out font-light text-base text-[#a1a1aa] tracking-widest">8 April</p>
         </div>
     </section>
 
     <!-- Section 1: Beginning -->
     <section id="sec-1" class="fixed inset-0 flex flex-col items-center justify-center transition-opacity duration-[1000ms] ease-in-out z-0 opacity-0 pointer-events-none relaxed-text backdrop-blur-[1px] bg-[#0b0b0b]">
         <div class="max-w-[600px] w-full text-center space-y-10 px-6">
-            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-serif font-medium text-2xl tracking-tight text-[#f5f5f5]">8 April 2025...</p>
-            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-lg text-[#a1a1aa]">shayad raat ke 12 ya 2 baje ke aas paas</p>
-            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-lg text-[#a1a1aa]">sab kuch ek normal din ki tarah hi start hua tha</p>
-            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-lg text-[#a1a1aa]">kuch special nahi…</p>
-            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-lg text-[#a1a1aa]">kuch plan bhi nahi tha</p>
+            <p class="reveal-text opacity-0 translate-y-5 transition-all duration-[1500ms] ease-in-out font-serif font-medium text-2xl tracking-tight text-[#f5f5f5]">8 April 2025...</p>
+            <p class="reveal-text opacity-0 translate-y-5 transition-all duration-[1500ms] ease-in-out font-light text-lg text-[#a1a1aa]">shayad raat ke 12 ya 2 baje ke aas paas</p>
+            <p class="reveal-text opacity-0 translate-y-5 transition-all duration-[1500ms] ease-in-out font-light text-lg text-[#a1a1aa]">sab kuch ek normal din ki tarah hi start hua tha</p>
+            <p class="reveal-text opacity-0 translate-y-5 transition-all duration-[1500ms] ease-in-out font-light text-lg text-[#a1a1aa]">kuch special nahi…</p>
+            <p class="reveal-text opacity-0 translate-y-5 transition-all duration-[1500ms] ease-in-out font-light text-lg text-[#a1a1aa]">kuch plan bhi nahi tha</p>
         </div>
     </section>
 
     <!-- Section 2: First Connection -->
     <section id="sec-2" class="fixed inset-0 flex flex-col items-center justify-center transition-opacity duration-[1000ms] ease-in-out z-0 opacity-0 pointer-events-none relaxed-text backdrop-blur-[1px] bg-[#0b0b0b]">
         <div class="max-w-[600px] w-full text-center space-y-10 px-6">
-            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-serif font-medium text-2xl tracking-tight text-[#f5f5f5]">bas baat ho rahi thi…</p>
-            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-lg text-[#a1a1aa]">kuch khas bhi nahi…</p>
-            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-lg text-[#a1a1aa]">par pata nahi kyun,</p>
-            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-lg text-[#a1a1aa]">main un baaton ka wait karne laga tha</p>
+            <p class="reveal-text opacity-0 translate-y-5 transition-all duration-[1500ms] ease-in-out font-serif font-medium text-2xl tracking-tight text-[#f5f5f5]">bas baat ho rahi thi…</p>
+            <p class="reveal-text opacity-0 translate-y-5 transition-all duration-[1500ms] ease-in-out font-light text-lg text-[#a1a1aa]">kuch khas bhi nahi…</p>
+            <p class="reveal-text opacity-0 translate-y-5 transition-all duration-[1500ms] ease-in-out font-light text-lg text-[#a1a1aa]">par pata nahi kyun,</p>
+            <p class="reveal-text opacity-0 translate-y-5 transition-all duration-[1500ms] ease-in-out font-light text-lg text-[#a1a1aa]">main un baaton ka wait karne laga tha</p>
         </div>
     </section>
 
     <!-- Section 3: Something Was There -->
     <section id="sec-3" class="fixed inset-0 flex flex-col items-center justify-center transition-opacity duration-[1000ms] ease-in-out z-0 opacity-0 pointer-events-none relaxed-text backdrop-blur-[1px] bg-[#0b0b0b]">
         <div class="max-w-[600px] w-full text-center space-y-10 px-6">
-            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-serif font-medium text-2xl tracking-tight text-[#f5f5f5]">cheezain tab bhi thi…</p>
-            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-lg text-[#a1a1aa]">maine apne tareeke se kaafi kuch keh diya tha</p>
-            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-lg text-[#a1a1aa]">shayad directly nahi…</p>
-            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-lg text-[#a1a1aa]">par tha sab</p>
+            <p class="reveal-text opacity-0 translate-y-5 transition-all duration-[1500ms] ease-in-out font-serif font-medium text-2xl tracking-tight text-[#f5f5f5]">cheezain tab bhi thi…</p>
+            <p class="reveal-text opacity-0 translate-y-5 transition-all duration-[1500ms] ease-in-out font-light text-lg text-[#a1a1aa]">maine apne tareeke se kaafi kuch keh diya tha</p>
+            <p class="reveal-text opacity-0 translate-y-5 transition-all duration-[1500ms] ease-in-out font-light text-lg text-[#a1a1aa]">shayad directly nahi…</p>
+            <p class="reveal-text opacity-0 translate-y-5 transition-all duration-[1500ms] ease-in-out font-light text-lg text-[#a1a1aa]">par tha sab</p>
         </div>
     </section>
 
@@ -143,12 +146,12 @@
 <section id="sec-4" class="fixed inset-0 flex flex-col items-center justify-center transition-opacity duration-[1000ms] ease-in-out z-0 opacity-0 pointer-events-none relaxed-text backdrop-blur-[1px] bg-[#0b0b0b]">
     <div class="max-w-[600px] w-full text-center space-y-10 px-6">
 
-        <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out">shayad tum soch rahi hogi…</p>
-        <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out">ye sab itna serious kaise ho gaya</p>
-        <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out">kab normal baatein… important ho gayi</p>
-        <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out">kab baat karna zaroori ho gaya</p>
-        <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out">kab ek dusre ki aadat si ho gayi</p>
-        <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out">pata hi nahi chala</p>
+        <p class="reveal-text opacity-0 translate-y-5 transition-all duration-[1500ms] ease-in-out">shayad tum soch rahi hogi…</p>
+        <p class="reveal-text opacity-0 translate-y-5 transition-all duration-[1500ms] ease-in-out">ye sab itna serious kaise ho gaya</p>
+        <p class="reveal-text opacity-0 translate-y-5 transition-all duration-[1500ms] ease-in-out">kab normal baatein… important ho gayi</p>
+        <p class="reveal-text opacity-0 translate-y-5 transition-all duration-[1500ms] ease-in-out">kab baat karna zaroori ho gaya</p>
+        <p class="reveal-text opacity-0 translate-y-5 transition-all duration-[1500ms] ease-in-out">kab ek dusre ki aadat si ho gayi</p>
+        <p class="reveal-text opacity-0 translate-y-5 transition-all duration-[1500ms] ease-in-out">pata hi nahi chala</p>
 
     </div>
 </section>
@@ -156,10 +159,10 @@
     <!-- Section 5: The Night -->
     <section id="sec-5" class="fixed inset-0 flex flex-col items-center justify-center transition-opacity duration-[1000ms] ease-in-out z-0 opacity-0 pointer-events-none relaxed-text backdrop-blur-[1px] bg-[#0b0b0b]">
         <div class="max-w-[600px] w-full text-center space-y-10 px-6">
-            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-serif font-medium text-2xl tracking-tight text-[#f5f5f5]">phir uss raat…</p>
-            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-lg text-[#a1a1aa]">tumne bhi keh diya</p>
-            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-lg text-[#a1a1aa]">aur pata nahi kyun…</p>
-            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-lg text-[#a1a1aa]">uske baad sab alag lagne laga</p>
+            <p class="reveal-text opacity-0 translate-y-5 transition-all duration-[1500ms] ease-in-out font-serif font-medium text-2xl tracking-tight text-[#f5f5f5]">phir uss raat…</p>
+            <p class="reveal-text opacity-0 translate-y-5 transition-all duration-[1500ms] ease-in-out font-light text-lg text-[#a1a1aa]">tumne bhi keh diya</p>
+            <p class="reveal-text opacity-0 translate-y-5 transition-all duration-[1500ms] ease-in-out font-light text-lg text-[#a1a1aa]">aur pata nahi kyun…</p>
+            <p class="reveal-text opacity-0 translate-y-5 transition-all duration-[1500ms] ease-in-out font-light text-lg text-[#a1a1aa]">uske baad sab alag lagne laga</p>
         </div>
     </section>
 
@@ -172,7 +175,7 @@
             <!-- Nodes Container -->
             <div class="flex flex-col gap-16 w-full">
                 <!-- Node 1 -->
-                <div class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out relative flex items-center justify-between w-full group">
+                <div class="reveal-text opacity-0 translate-y-5 transition-all duration-[1500ms] ease-in-out relative flex items-center justify-between w-full group">
                     <div class="w-1/2 pr-8 text-left">
                         <p class="font-light text-sm text-[#a1a1aa]">uss raat… 12 ya shayad 2 baje</p>
                     </div>
@@ -181,7 +184,7 @@
                 </div>
 
                 <!-- Node 2 -->
-                <div class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out relative flex items-center justify-between w-full group">
+                <div class="reveal-text opacity-0 translate-y-5 transition-all duration-[1500ms] ease-in-out relative flex items-center justify-between w-full group">
                     <div class="w-1/2 pr-8"></div>
                     <button class="node-btn absolute left-1/2 -translate-x-1/2 w-[14px] h-[14px] rounded-full bg-[#1a1a1a] border border-[#2a2a2a] transition-all duration-500 z-10 outline-none cursor-pointer" onclick="activateNode(this);"></button>
                     <div class="w-1/2 pl-8 text-left">
@@ -190,7 +193,7 @@
                 </div>
 
                 <!-- Node 3 -->
-                <div class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out relative flex items-center justify-between w-full group">
+                <div class="reveal-text opacity-0 translate-y-5 transition-all duration-[1500ms] ease-in-out relative flex items-center justify-between w-full group">
                     <div class="w-1/2 pr-8 text-left">
                         <p class="font-light text-sm text-[#a1a1aa]">chhoti chhoti baatein jinka koi matlab nahi hota tha</p>
                     </div>
@@ -199,7 +202,7 @@
                 </div>
 
                 <!-- Node 4 -->
-                <div class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out relative flex items-center justify-between w-full group">
+                <div class="reveal-text opacity-0 translate-y-5 transition-all duration-[1500ms] ease-in-out relative flex items-center justify-between w-full group">
                     <div class="w-1/2 pr-8"></div>
                     <button class="node-btn absolute left-1/2 -translate-x-1/2 w-[14px] h-[14px] rounded-full bg-[#1a1a1a] border border-[#2a2a2a] transition-all duration-500 z-10 outline-none cursor-pointer" onclick="activateNode(this);"></button>
                     <div class="w-1/2 pl-8 text-left">
@@ -208,7 +211,7 @@
                 </div>
 
                 <!-- Node 5 -->
-                <div class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out relative flex items-center justify-between w-full group">
+                <div class="reveal-text opacity-0 translate-y-5 transition-all duration-[1500ms] ease-in-out relative flex items-center justify-between w-full group">
                     <div class="w-1/2 pr-8 text-left">
                         <p class="font-light text-sm text-[#a1a1aa]">baar baar phone check karna… sirf tumhare liye</p>
                     </div>
@@ -235,10 +238,10 @@
     <!-- Section 7: Realisation (Emotional Peak) -->
     <section id="sec-7" class="fixed inset-0 flex flex-col items-center justify-center transition-opacity duration-[1000ms] ease-in-out z-0 opacity-0 pointer-events-none relaxed-text backdrop-blur-[1px] bg-[#0b0b0b]">
         <div class="max-w-[600px] w-full text-center space-y-12 px-6">
-            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-serif font-medium text-2xl tracking-tight text-[#f5f5f5]">maine kabhi plan nahi kiya tha…</p>
-            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-lg text-[#a1a1aa]">par dheere dheere…</p>
-            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-lg text-[#a1a1aa]">tum wo ban gayi</p>
-            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-lg text-[#a1a1aa]">jiski main shayad jitna hona chahiye usse zyada care karta hoon</p>
+            <p class="reveal-text opacity-0 translate-y-5 transition-all duration-[1500ms] ease-in-out font-serif font-medium text-2xl tracking-tight text-[#f5f5f5]">maine kabhi plan nahi kiya tha…</p>
+            <p class="reveal-text opacity-0 translate-y-5 transition-all duration-[1500ms] ease-in-out font-light text-lg text-[#a1a1aa]">par dheere dheere…</p>
+            <p class="reveal-text opacity-0 translate-y-5 transition-all duration-[1500ms] ease-in-out font-light text-lg text-[#a1a1aa]">tum wo ban gayi</p>
+            <p class="reveal-text opacity-0 translate-y-5 transition-all duration-[1500ms] ease-in-out font-light text-lg text-[#a1a1aa]">jiski main shayad jitna hona chahiye usse zyada care karta hoon</p>
         </div>
     </section>
 
@@ -246,13 +249,13 @@
 <section id="sec-8" class="fixed inset-0 flex flex-col items-center justify-center transition-opacity duration-[1000ms] ease-in-out z-0 opacity-0 pointer-events-none relaxed-text backdrop-blur-[1px] bg-[#0b0b0b]">
     <div class="max-w-[600px] w-full text-center space-y-10 px-6">
 
-        <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out">mujhe lagta tha baatein hi important hoti hain…</p>
-        <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out">par tumse baat karke samajh aaya…</p>
-        <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out">har baar kuch kehna zaroori nahi hota</p>
-        <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out">kabhi kabhi bas</p>
-        <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out">baat chalti rehna hi kaafi hota hai</p>
-        <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out">aur shayad…</p>
-        <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out">mujhe wahi accha lagta hai</p>
+        <p class="reveal-text opacity-0 translate-y-5 transition-all duration-[1500ms] ease-in-out">mujhe lagta tha baatein hi important hoti hain…</p>
+        <p class="reveal-text opacity-0 translate-y-5 transition-all duration-[1500ms] ease-in-out">par tumse baat karke samajh aaya…</p>
+        <p class="reveal-text opacity-0 translate-y-5 transition-all duration-[1500ms] ease-in-out">har baar kuch kehna zaroori nahi hota</p>
+        <p class="reveal-text opacity-0 translate-y-5 transition-all duration-[1500ms] ease-in-out">kabhi kabhi bas</p>
+        <p class="reveal-text opacity-0 translate-y-5 transition-all duration-[1500ms] ease-in-out">baat chalti rehna hi kaafi hota hai</p>
+        <p class="reveal-text opacity-0 translate-y-5 transition-all duration-[1500ms] ease-in-out">aur shayad…</p>
+        <p class="reveal-text opacity-0 translate-y-5 transition-all duration-[1500ms] ease-in-out">mujhe wahi accha lagta hai</p>
 
     </div>
 </section>
@@ -262,25 +265,25 @@
 
     <div class="max-w-[600px] w-full text-center space-y-10 px-6">
 
-        <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-serif text-2xl">
+        <p class="reveal-text opacity-0 translate-y-5 transition-all duration-[1500ms] ease-in-out font-serif text-2xl">
             happy anniversary
         </p>
 
-        <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out text-[#a1a1aa]">
+        <p class="reveal-text opacity-0 translate-y-5 transition-all duration-[1500ms] ease-in-out text-[#a1a1aa]">
             1 saal ho gaya…
         </p>
 
-        <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out text-[#a1a1aa]">
+        <p class="reveal-text opacity-0 translate-y-5 transition-all duration-[1500ms] ease-in-out text-[#a1a1aa]">
             itni saari fights  
             itne saare moments  
             aur phir bhi…
         </p>
 
-        <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out text-[#a1a1aa]">
+        <p class="reveal-text opacity-0 translate-y-5 transition-all duration-[1500ms] ease-in-out text-[#a1a1aa]">
             hum abhi bhi saath hain
         </p>
 
-        <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out text-[#d4a373]">
+        <p class="reveal-text opacity-0 translate-y-5 transition-all duration-[1500ms] ease-in-out text-[#d4a373]">
             aur shayad wahi sabse important hai
         </p>
 
@@ -291,13 +294,13 @@
     <!-- Section 10: Ending -->
     <section id="sec-10" class="fixed inset-0 flex flex-col items-center justify-center transition-opacity duration-[1000ms] ease-in-out z-0 opacity-0 pointer-events-none relaxed-text backdrop-blur-[1px] bg-[#0b0b0b]">
         <div class="max-w-[600px] w-full text-center space-y-10 px-6">
-            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-serif font-medium text-2xl tracking-tight text-[#f5f5f5]">1 saal</p>
-            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-lg text-[#a1a1aa]">365 din</p>
-            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-lg text-[#a1a1aa]">aur pata nahi kaise…</p>
-            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-light text-lg text-[#a1a1aa]">abhi bhi sab naya sa lagta hai</p>
+            <p class="reveal-text opacity-0 translate-y-5 transition-all duration-[1500ms] ease-in-out font-serif font-medium text-2xl tracking-tight text-[#f5f5f5]">1 saal</p>
+            <p class="reveal-text opacity-0 translate-y-5 transition-all duration-[1500ms] ease-in-out font-light text-lg text-[#a1a1aa]">365 din</p>
+            <p class="reveal-text opacity-0 translate-y-5 transition-all duration-[1500ms] ease-in-out font-light text-lg text-[#a1a1aa]">aur pata nahi kaise…</p>
+            <p class="reveal-text opacity-0 translate-y-5 transition-all duration-[1500ms] ease-in-out font-light text-lg text-[#a1a1aa]">abhi bhi sab naya sa lagta hai</p>
             
             <div class="pt-12">
-                <p id="final-text" class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-out font-serif font-medium text-4xl tracking-tight text-[#d4a373] transform scale-100">
+                <p id="final-text" class="reveal-text opacity-0 translate-y-5 transition-all duration-[1500ms] ease-out font-serif font-medium text-4xl tracking-tight text-[#d4a373] transform scale-100">
                     accha lagta hai… ki tum ho
                 </p>
             </div>
@@ -308,7 +311,7 @@
     <section id="sec-11" class="fixed inset-0 flex flex-col items-center justify-center transition-opacity duration-[1000ms] ease-in-out z-0 opacity-0 pointer-events-none backdrop-blur-[1px] bg-[#0b0b0b]">
         <div id="sec-10-dimmer" class="absolute inset-0 bg-black/50 opacity-0 transition-opacity duration-[3000ms] ease-in-out z-[-1]"></div>
         <div class="max-w-[600px] w-full text-center px-6 flex flex-col items-center">
-            <p class="reveal-text opacity-0 translate-y-[20px] transition-all duration-[1500ms] ease-in-out font-serif font-medium text-2xl tracking-tight text-[#f5f5f5]">abhi to bas shuru kiya hai…</p>
+            <p class="reveal-text opacity-0 translate-y-5 transition-all duration-[1500ms] ease-in-out font-serif font-medium text-2xl tracking-tight text-[#f5f5f5]">abhi to bas shuru kiya hai…</p>
 
 <button onclick="openLetter()" 
     class="relative group px-6 py-3 rounded-full border border-[#d4a373]/30 text-[#d4a373] text-sm tracking-widest transition-all duration-500 overflow-hidden">
@@ -575,7 +578,7 @@ if (line.id === 'final-text') {
     // Delay BEFORE showing final line
     setTimeout(() => {
 
-        line.classList.remove('opacity-0', 'translate-y-[20px]');
+        line.classList.remove('opacity-0', 'translate-y-5');
         line.classList.add('opacity-100', 'translate-y-0');
 
 // 🎯 LOCK MUSIC EXACTLY HERE
@@ -596,7 +599,7 @@ if (line.id === 'final-text') {
                 line.style.transitionDelay = `${actualDelay}ms`;
                 
                 setTimeout(() => {
-                    line.classList.remove('opacity-0', 'translate-y-[20px]');
+                    line.classList.remove('opacity-0', 'translate-y-5');
                     line.classList.add('opacity-100', 'translate-y-0');
                 }, 50);
             });
@@ -645,7 +648,7 @@ setTimeout(() => {
             lines.forEach(line => {
                 line.style.transitionDelay = '0ms';
                 line.classList.remove('opacity-100', 'translate-y-0');
-                line.classList.add('opacity-0', 'translate-y-[20px]');
+                line.classList.add('opacity-0', 'translate-y-5');
                 
                 if (line.id === 'final-text') {
                     line.style.transform = 'scale(1)';
